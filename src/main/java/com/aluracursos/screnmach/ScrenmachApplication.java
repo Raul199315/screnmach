@@ -16,6 +16,7 @@ public class ScrenmachApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		var consumoApi = new ConsumoAPI();
-		var json = consumoApi.obtenerDatos()
+		var json = consumoApi.obtenerDatos( "https://www.omdbapi.com/?t=game+of+thrones&apikey=5523bf38");
+		System.out.println(json);
 	}
 }
