@@ -1,5 +1,6 @@
 package com.aluracursos.screnmach.principal;
 
+import com.aluracursos.screnmach.model.DatosEpisodio;
 import com.aluracursos.screnmach.model.DatosSerie;
 import com.aluracursos.screnmach.model.DatosTemporada;
 import com.aluracursos.screnmach.service.ConsumoAPI;
@@ -30,6 +31,16 @@ public class Principal {
                 var datosTemporadas = conversor.obtenerDatos(json, DatosTemporada.class);
                 temporadas.add(datosTemporadas);
             }
-            temporadas.forEach(System.out::println);
+            //temporadas.forEach(System.out::println);
+
+            // mostrar solo el titulo de los episodios para las temporadas
+            for (int i = 0; i < datos.totalTemporadas(); i++) {
+                List<DatosEpisodio> episodiosTemporadas = temporadas.get(i).episodios();
+                for (int j = 0; j < episodiosTemporadas.size(); j++) {
+                    System.out.printf(episodiosTemporadas.get(j).titulo());
+
+                }
+            }
+            temporadas.forEach(t -> t.episodios().forEach(e -> System.out.printf(e.titulo())));
     }
 }
