@@ -3,6 +3,7 @@ package com.aluracursos.screnmach;
 import com.aluracursos.screnmach.model.DatosEpisodio;
 import com.aluracursos.screnmach.model.DatosSerie;
 import com.aluracursos.screnmach.model.DatosTemporada;
+import com.aluracursos.screnmach.principal.Principal;
 import com.aluracursos.screnmach.service.ConsumoAPI;
 import com.aluracursos.screnmach.service.ConvierteDatos;
 import org.springframework.boot.CommandLineRunner;
@@ -22,24 +23,8 @@ public class ScrenmachApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoAPI();
-		var json = consumoApi.obtenerDatos( "https://www.omdbapi.com/?t=game+of+thrones&apikey=5523bf38");
-		System.out.println(json);
+		Principal principal = new Principal();
+		principal.muestraElmenu();
 
-		ConvierteDatos converson = new ConvierteDatos();
-		var datos = converson.obtenerDatos(json, DatosSerie.class);
-		System.out.println(datos);
-		json= consumoApi.obtenerDatos("https://www.omdbapi.com/?t=game+of+thrones&Season=1&episode=1&apikey=5523bf38");
-		DatosEpisodio episodio = converson.obtenerDatos(json, DatosEpisodio.class);
-		System.out.printf(String.valueOf(episodio));
-
-
-		List<DatosTemporada> temporadas = new ArrayList<>();
-		for (int i = 1; i <=datos.totalTemporadas() ; i++) {
-			json= consumoApi.obtenerDatos("https://www.omdbapi.com/?t=game+of+thrones&Season="+i+"&apikey=5523bf38");
-			var datosTemporadas = converson.obtenerDatos(json, DatosTemporada.class);
-			temporadas.add(datosTemporadas);
-		}
-		temporadas.forEach(System.out::println);
 	}
 }
