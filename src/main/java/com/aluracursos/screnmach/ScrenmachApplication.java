@@ -3,6 +3,7 @@ package com.aluracursos.screnmach;
 import com.aluracursos.screnmach.model.DatosEpisodio;
 import com.aluracursos.screnmach.model.DatosSerie;
 import com.aluracursos.screnmach.model.DatosTemporada;
+import com.aluracursos.screnmach.principal.EjemploStreams;
 import com.aluracursos.screnmach.principal.Principal;
 import com.aluracursos.screnmach.service.ConsumoAPI;
 import com.aluracursos.screnmach.service.ConvierteDatos;
@@ -25,6 +26,9 @@ public class ScrenmachApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Principal principal = new Principal();
 		principal.muestraElmenu();
+
+		//EjemploStreams ejemploStreams= new EjemploStreams();
+		//ejemploStreams.muestraEjemplo();
 
 	}
 }
