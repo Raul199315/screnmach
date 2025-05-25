@@ -8,11 +8,9 @@ public enum Categoria {
     CRIMEN("Crime");
 
     private String categoriaOmdb;
-
     Categoria (String categoriaOmdb){
         this.categoriaOmdb = categoriaOmdb;
     }
-
 
     public static Categoria fromString(String text) {
         for (Categoria categoria : Categoria.values()) {
@@ -20,6 +18,7 @@ public enum Categoria {
                 return categoria;
             }
         }
-        throw new IllegalArgumentException("Ninguna categoria encontrada: "+ text);
+        throw new IllegalArgumentException("Ninguna categoria encontrada: " + text);
     }
+
 }
